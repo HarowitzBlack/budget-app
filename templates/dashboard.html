@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1 class="net-savings">You have $0.0 with you</h1>
+    <form class="daily-cash-form" action="{{ url_for("addItem_to_list") }}" method="post">
+      <p class="select-option-text">You have </p>
+      <select class="select-optioon" name="action-type">
+        <option value="save">Save</option>
+        <option value="spent">Spent</option>
+      </select>
+      <input type="text" name="income" placeholder="$0.00">
+      <input type="submit" class="post-btn" value="Push">
+    </form>
+
+    {% for d in data.items() %}
+      <p> {{ d[1] }} </p>
+    {% endfor %}
+
+  </body>
+</html>
