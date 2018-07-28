@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <h1 class="net-savings">You have $0.0 with you</h1>
+    <h1 class="net-savings">Your net income is ${{ net_income }}</h1>
     <form class="daily-cash-form" action="{{ url_for("addItem_to_list") }}" method="post">
       <p class="select-option-text">You have </p>
       <select class="select-optioon" name="action-type">
@@ -14,6 +14,10 @@
       </select>
       <input type="text" name="income" placeholder="$0.00">
       <input type="submit" class="post-btn" value="Push">
+      {% for u in user_info %}
+        <li>{{ u.user_action}} {{ u.user_net_income}}</li>
+      {% endfor %}
+
     </form>
   </body>
 </html>

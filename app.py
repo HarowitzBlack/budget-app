@@ -24,7 +24,9 @@ class UserNetInfo(db.Model):
 @app.route("/",methods = ["GET","POST"])
 def dashboard():
     if request.method == "GET":
-        return render_template("dashboard.html",data="udata")
+        users = get_from_db()
+        total_income = sum([float(u.user_net_income) for u in users])
+        return render_template("dashboard.html",net_income=total_income,user_info = users)
 
 @app.route("/add/",methods = ["GET","POST"])
 def addItem_to_list():
@@ -46,6 +48,10 @@ def add_to_db(uincome = None,uactiontype = None):
     user_data = UserNetInfo(user_action = uactiontype,user_net_income = uincome)
     db.session.add(user_data)
     db.session.commit()
+
+def get_from_db():
+    info = UserNetInfo.query.order_by(UserNetInfo.user_net_income).all()
+    return info
 
 @app.route("/error/",methods = ["GET","POST"])
 def errorPage():
