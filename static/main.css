@@ -1,0 +1,116 @@
+
+body{
+  background-color: #f9f9f9;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0px auto;
+}
+
+.wrapper-main{
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-field-container{
+  width: 100vw;
+  height: 20%;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: row;
+}
+
+.net-income-box{
+  width: 30%;
+  height: 100%;
+  background-color: #f9f9f9;
+}
+
+.net-savings{
+  text-align: center;
+  font-family:ubuntu;
+  color:#333;
+  padding-top: 25px;
+}
+
+.fields-box{
+  width: 70%;
+  height: 100%;
+  background-color: #e8f0ff;
+}
+
+.field-item-box{
+  position: relative;
+  left:100px;
+}
+
+.select-option-text{
+  font-family: ubuntu;
+  font-weight: 500;
+}
+
+.income-field-box{
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 7px;
+  background-color: #f9f9f9;
+  padding: 2px;
+  font-family: ubuntu;
+  box-shadow: 2px 2px 5px 5px #c9d3e5;
+}
+
+.post-btn{
+  width: 120px;
+  height:60px;
+  padding: 5px;
+  color:#fff;
+  background-color: #14ff95;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.select-option{
+  width: 130px;
+  height: 40px;
+  padding: 5px;
+  background-color:#bacdff;
+  border: none;
+  border-radius: 7px;
+}
+
+.below-container{
+  width: 100vw;
+  height: 80%;
+  background-color: #236;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.daily-income-items{
+  width: 50vw;
+  height: 100%;
+  background-color: #f9f9f9;
+  overflow-y:scroll;
+}
+
+.graph-container{
+  width: 50vw;
+  height: 100%;
+  background-color: #fff;
+}
+
+.daily-income-item{
+  font-weight: normal;
+  font-family: ubuntu;
+  padding: 20px;
+  background-color: #ddeaff;
+}
+
+.daily-income-item:nth-child(odd){
+  background-color: #eff5ff;
+}

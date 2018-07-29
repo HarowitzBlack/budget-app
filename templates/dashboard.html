@@ -3,21 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="/static/main.css">
   </head>
   <body>
-    <h1 class="net-savings">Your net income is ${{ net_income }}</h1>
-    <form class="daily-cash-form" action="{{ url_for("addItem_to_list") }}" method="post">
-      <p class="select-option-text">You have </p>
-      <select class="select-optioon" name="action-type">
-        <option value="save">Save</option>
-        <option value="spent">Spent</option>
-      </select>
-      <input type="text" name="income" placeholder="$0.00">
-      <input type="submit" class="post-btn" value="Push">
-      {% for u in user_info %}
-        <li>{{ u.user_action}} {{ u.user_net_income}}</li>
-      {% endfor %}
+    <div class="wrapper-main">
+      <div class="info-field-container">
+        <div class="net-income-box">
+            <h1 class="net-savings">Net Savings : ${{ net_income }}</h1>
+        </div>
+        <div class="fields-box">
+          <div class="field-item-box">
+            <form class="daily-cash-form" action="{{ url_for("addItem_to_list") }}" method="post">
+              <p class="select-option-text">I have </p>
+              <select class="select-option" name="action-type">
+                <option value="save">Saved</option>
+                <option value="spent">Spent</option>
+              </select>
+              <input type="text" name="income" class="income-field-box" autocomplete="off" placeholder="$0.00">
+              <input type="submit" class="post-btn" value="Push">
+            </form>
+          </div>
+        </div>
+      </div>
 
-    </form>
+      <div class="below-container">
+        <div class="daily-income-items">
+          {% for u in user_info %}
+            <li class="daily-income-item">{{ u.user_action}} : ${{ u.user_net_income}}</li>
+          {% endfor %}
+        </div>
+        <div class="graph-container"></div>
+      </div>
+    </div>
   </body>
 </html>
