@@ -16,6 +16,8 @@ class UserNetInfo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_action = db.Column(db.String(10))
     user_net_income =db.Column(db.String())
+    user_item_type = db.Column(db.String())
+    time_stamp = db.Column(db.String())
 
     def __repr__(self):
         return "<UserNetInfo {0}>".format(self.id)
@@ -39,13 +41,20 @@ def addItem_to_list():
         # add new fields here
         user_daily_income = request.form["income"]
         user_action_type  = request.form["action-type"]
+        user_item_type = None
+        if request.form["item-type"]:
+            user_item_type = request.form["item-type"]
+        if user_action_type == "spent":
+            user_daily_income = float(user_daily_income) * -1
+            user_daily_income = str(user_daily_income)
         # add to db
-        add_to_db(uincome = user_daily_income,uactiontype = user_action_type)
+        add_to_db(uincome = user_daily_income,uactiontype = user_action_type,user_item_type=user_item_type)
         return redirect(url_for("dashboard"))
     return "OK"
 
-def add_to_db(uincome = None,uactiontype = None):
-    user_data = UserNetInfo(user_action = uactiontype,user_net_income = uincome)
+def add_to_db(uincome = None,uactiontype = None,user_item_type = None):
+    time_stamp = round(time.time())
+    user_data = UserNetInfo(user_action = uactiontype,user_net_income = uincome,user_item_type=user_item_type,time_stamp=time_stamp)
     db.session.add(user_data)
     db.session.commit()
 

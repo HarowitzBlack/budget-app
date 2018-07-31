@@ -4,23 +4,45 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="/static/main.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   </head>
   <body>
     <div class="wrapper-main">
       <div class="info-field-container">
         <div class="net-income-box">
-            <h1 class="net-savings">Net Savings : ${{ net_income }}</h1>
+            <h3 class="net-savings">Net Savings : ${{ net_income }}</h3>
+            <div class="item-controller-box">
+              <button type="button" name="button" class="dash-controll-btn"><i class="fas fa-check-square"></i> Select All</button>
+              <button type="button" name="button" class="dash-controll-btn"><i class="fas fa-trash"></i> Delete </button>
+            </div>
         </div>
         <div class="fields-box">
           <div class="field-item-box">
             <form class="daily-cash-form" action="{{ url_for("addItem_to_list") }}" method="post">
-              <p class="select-option-text">I have </p>
-              <select class="select-option" name="action-type">
+
+              <label for="select-option">What did you do?</label>
+              <select class="select-option" id="action-type-dropdown" name="action-type">
                 <option value="save">Saved</option>
                 <option value="spent">Spent</option>
               </select>
+
+              <!--show this only if "spent" is selected -->
+              <div class="item-type-box">
+                <label for="select-option">What did you spend it on?</label>
+                <select class="select-option" id="item-dropdown" name="item-type">
+                  <option value="food">Food and Drinks</option>
+                  <option value="fashion">Fashion</option>
+                  <option value="transport">Transportation</option>
+                  <option value="gadgets">Gadgets</option>
+                  <option value="events">Parties & Events</option>
+                  <option value="self">Self Development</option>
+                  <option value="gaming">Gaming</option>
+                </select>
+              </div>
+
+
               <input type="text" name="income" class="income-field-box" autocomplete="off" placeholder="$0.00">
-              <input type="submit" class="post-btn" value="Push">
+              <input type="submit" class="post-btn" value="Submit">
             </form>
           </div>
         </div>
@@ -29,11 +51,22 @@
       <div class="below-container">
         <div class="daily-income-items">
           {% for u in user_info %}
-            <li class="daily-income-item">{{ u.user_action}} : ${{ u.user_net_income}}</li>
+            <div class="daily-income-item">
+              <div class="item-square-box">
+                <input type="checkbox" name="" value="" class="checkitem-box">
+              </div>
+              <div class="item-square-box">
+                <p class="big-bold-text">${{ u.user_net_income }}</p>
+              </div>
+              <div class="item-square-box">
+                <p class="big-med-text">{{ u.user_item_type }} ({{ u.user_action}})</p>
+              </div>
+            </div>
           {% endfor %}
         </div>
         <div class="graph-container"></div>
       </div>
     </div>
+    <script src="/static/app.js"></script>
   </body>
 </html>

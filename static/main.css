@@ -7,6 +7,8 @@ body{
   margin: 0px auto;
 }
 
+
+
 .wrapper-main{
   width: inherit;
   height: inherit;
@@ -23,15 +25,22 @@ body{
 }
 
 .net-income-box{
-  width: 30%;
+  width: 20%;
   height: 100%;
-  background-color: #f9f9f9;
+  background-color: #21232d;
+}
+
+.dash-controll-btn{
+  border: none;
+  background-color: inherit;
+  color:#f9f9f9;
+  cursor: pointer;
 }
 
 .net-savings{
   text-align: center;
   font-family:ubuntu;
-  color:#333;
+  color:#f9f9f9;
   padding-top: 25px;
 }
 
@@ -53,33 +62,39 @@ body{
 
 .income-field-box{
   width: 200px;
-  height: 50px;
+  height: 45px;
   border: none;
-  border-radius: 7px;
+  border-radius: 3px;
   background-color: #f9f9f9;
   padding: 2px;
+  padding-left: 6px;
   font-family: ubuntu;
-  box-shadow: 2px 2px 5px 5px #c9d3e5;
+  box-shadow: 1px 1px 3px 3px #c9d3e5;
+  margin: 5px;
 }
 
 .post-btn{
   width: 120px;
-  height:60px;
-  padding: 5px;
+  height:50px;
+  padding: 3px;
   color:#fff;
-  background-color: #14ff95;
+  background-color: #176aef;
   border: none;
-  border-radius: 7px;
+  border-radius: 4px;
   cursor: pointer;
+  margin: 5px;
+  box-shadow: 1px 1px 3px 3px #c9d3e5;
 }
 
 .select-option{
   width: 130px;
-  height: 40px;
-  padding: 5px;
-  background-color:#bacdff;
+  height: 45px;
+  padding: 3px;
+  background-color:#fff;
   border: none;
-  border-radius: 7px;
+  border-radius: 3px;
+  margin: 5px;
+  box-shadow: 1px 1px 3px 3px #c9d3e5;
 }
 
 .below-container{
@@ -92,14 +107,15 @@ body{
 
 
 .daily-income-items{
-  width: 50vw;
+  width: 20vw;
   height: 100%;
   background-color: #f9f9f9;
   overflow-y:scroll;
+  overflow-x: hidden;
 }
 
 .graph-container{
-  width: 50vw;
+  width: 80vw;
   height: 100%;
   background-color: #fff;
 }
@@ -107,10 +123,50 @@ body{
 .daily-income-item{
   font-weight: normal;
   font-family: ubuntu;
-  padding: 20px;
-  background-color: #ddeaff;
+  padding: 3px;
+  background-color: #344054;
+  display:flex;
+  flex-direction: row;
 }
 
 .daily-income-item:nth-child(odd){
-  background-color: #eff5ff;
+  background-color: #242d3a;
+}
+
+.item-type-box{
+  display: None;
+}
+
+.item-square-box{
+  width: auto;
+  height: 100%;
+  padding: 3px;
+  background-color: inherit;
+  margin: 3px;
+}
+
+
+.big-bold-text{
+  font-family: ubuntu;
+  font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+}
+
+
+.big-med-text{
+  font-family: ubuntu;
+  font-weight: 400;
+  color: #fff;
+  font-size: 12px;
+}
+
+
+input[type="checkbox"]:checked {
+  box-shadow: 0 0 3px 2px  #5fefc2;
+}
+
+.item-controller-box{
+  background-color: #21232d;
+  padding: 15px;
 }
