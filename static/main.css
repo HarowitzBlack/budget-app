@@ -169,4 +169,6 @@ input[type="checkbox"]:checked {
 .item-controller-box{
   background-color: #21232d;
   padding: 15px;
+  display: flex;
+  flex-direction: row;
 }

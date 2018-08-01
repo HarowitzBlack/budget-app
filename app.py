@@ -52,6 +52,10 @@ def addItem_to_list():
         return redirect(url_for("dashboard"))
     return "OK"
 
+@app.route("/remove",methods = ["GET","POST"])
+def remove_item():
+    return "deletion succesful!"
+
 def add_to_db(uincome = None,uactiontype = None,user_item_type = None):
     time_stamp = round(time.time())
     user_data = UserNetInfo(user_action = uactiontype,user_net_income = uincome,user_item_type=user_item_type,time_stamp=time_stamp)
@@ -59,7 +63,7 @@ def add_to_db(uincome = None,uactiontype = None,user_item_type = None):
     db.session.commit()
 
 def get_from_db():
-    info = UserNetInfo.query.order_by(UserNetInfo.user_net_income).all()
+    info = UserNetInfo.query.order_by(UserNetInfo.time_stamp).all()
     return info
 
 @app.route("/error/",methods = ["GET","POST"])

@@ -12,8 +12,11 @@
         <div class="net-income-box">
             <h3 class="net-savings">Net Savings : ${{ net_income }}</h3>
             <div class="item-controller-box">
-              <button type="button" name="button" class="dash-controll-btn"><i class="fas fa-check-square"></i> Select All</button>
-              <button type="button" name="button" class="dash-controll-btn"><i class="fas fa-trash"></i> Delete </button>
+              <button type="button" id="select-all-btn" name="button" class="dash-controll-btn"><i class="fas fa-check-square"></i> Select All</button>
+
+              <form action="{{ url_for("remove_item") }}" id="delete-item-form" method="post">
+                <input type="submit" id="delete-item-btn" value="Delete" name="button" class="dash-controll-btn"><i class="fas fa-trash"></i>
+              </form>
             </div>
         </div>
         <div class="fields-box">
@@ -51,9 +54,11 @@
       <div class="below-container">
         <div class="daily-income-items">
           {% for u in user_info %}
-            <div class="daily-income-item">
+            <div class="daily-income-item" data-item_id="{{ u.id }}">
               <div class="item-square-box">
-                <input type="checkbox" name="" value="" class="checkitem-box">
+                <form class="" name="dashcontroll" method="post">
+                  <input type="checkbox" name="checkbox" value="check" data-item_id="{{ u.id }}" class="checkbox-tick">
+                </form>
               </div>
               <div class="item-square-box">
                 <p class="big-bold-text">${{ u.user_net_income }}</p>
